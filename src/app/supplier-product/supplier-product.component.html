@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class=" supplier-item">
-                        <label for="branch_id" class="form-label">Branch ID<span class="txt-danger">*</span></label>
+                        <label for="branch_id" class="form-label">Branch ID<span class="txt-danger">*</span> <mat-icon> format_list_bulleted</mat-icon></label>
                         <select class="form-control" name="branch_id"  formControlName="branch_id">
                             <option *ngFor="let branch of branchList;" [value]="branch.branch_id">{{branch.branch_name}}</option>
     
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class=" supplier-item">
-                        <label for="supplier_name" class="form-label">Supplier Name<span class="txt-danger">*</span></label>
+                        <label for="supplier_name" class="form-label">Supplier Name<span class="txt-danger">*</span> <mat-icon> format_list_bulleted</mat-icon></label>
                         <select class="form-control" name="supplier_name"  formControlName="supplier_name" (ngModelChange)="onChange($event)">
                             <option *ngFor="let suppData of supplierIdData" [value]="suppData.supplier_id">{{suppData.supplier_name}}</option>
     
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col">
                     <div class=" supplier-item">
-                        <label for="bu_id" class="form-label">Bu ID</label>
+                        <label for="bu_id" class="form-label">Bu ID <mat-icon> format_list_bulleted</mat-icon></label>
                         <select class="form-control" name="bu_id"  formControlName="bu_id" (ngModelChange)="fetchProductsDynamic()">
                             <option *ngFor="let bu of buList" [value]="bu.bu_id">{{bu.bu_name}}</option>
     
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-5">
                     <div class=" supplier-item">
-                        <label for="product_name" class="form-label">Product Name</label>
+                        <label for="product_name" class="form-label">Product Name <mat-icon> format_list_bulleted</mat-icon></label>
                         <select class="form-control" name="product_name"  formControlName="product_name" (ngModelChange)="setProductId($event)" [(ngModel)]="prodItem.product_name">
                             <option [hidden]="supplierProductForm.controls.product_name.value" value="null" disabled>Select</option>
                             <option *ngFor="let prodData of productList" [value]="prodData.product_name">{{prodData.product_name}}</option>

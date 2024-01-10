@@ -14,7 +14,7 @@
         <mat-tab label="Upload File">
             <div class="mar20t">
                 <div class="mar20t col-lg-4">
-                    <label class="form-label">Doc Type</label>
+                    <label class="form-label">Doc Type <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                     <select class="form-control" name="doc_type" [(ngModel)]="doc_type">
 
                         <option *ngFor="let doctor of docList" [value]="doctor.ref_code">{{doctor.ref_desc}}

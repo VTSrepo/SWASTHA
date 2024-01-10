@@ -22,6 +22,7 @@ export class PetRegistrationComponent {
   livingConditionList: any = [];
   petRegObj: any;
   patient_id: any;
+  petCategoryList: any =[];
 
   constructor(private router: Router,
               private dialog: MatDialog,
@@ -56,7 +57,8 @@ export class PetRegistrationComponent {
       ref_by_doctor: [],
       patient_name: [],
       patient_type_name: [],
-      alt_mobile_no: []
+      alt_mobile_no: [],
+      pet_category: []
     })
 
     if (history.state && history.state.patient_id) {
@@ -77,6 +79,9 @@ export class PetRegistrationComponent {
     })
     this.ref.getPaymentModes('LIVCOND').subscribe(data => {
       this.livingConditionList = data.results;
+    })
+    this.ref.getPaymentModes('Pet_Cat').subscribe(data => {
+      this.petCategoryList = data.results;
     })
   }
 
@@ -109,7 +114,8 @@ export class PetRegistrationComponent {
       "ref_by_doctor": prForm.ref_by_doctor.value,
       "patient_name": prForm.patient_name.value,
       "patient_type_name": prForm.patient_name.value,
-      "alt_mobile_no": prForm.alt_mobile_no.value
+      "alt_mobile_no": prForm.alt_mobile_no.value,
+      "pet_category": prForm.pet_category.value
     }
     this.petRegService.createPetReg(params).subscribe(data => {
       this.dialog.open(InfoDialogComponent, {
@@ -117,6 +123,13 @@ export class PetRegistrationComponent {
         data: 'Pet Registration Saved Successfully!!!'
       })
       this.router.navigate(['landing']);
+    },(error) => {
+      if (error.error.status === 404) {
+        this.dialog.open(InfoDialogComponent, {
+          width: '400px',
+          data: error.error.message,
+        });
+      }
     })
   }
 
@@ -157,7 +170,8 @@ export class PetRegistrationComponent {
       "ref_by_doctor": prForm.ref_by_doctor.value,
       "patient_name": prForm.patient_name.value,
       "patient_type_name": prForm.patient_name.value,
-      "alt_mobile_no": prForm.alt_mobile_no.value
+      "alt_mobile_no": prForm.alt_mobile_no.value,
+      "pet_category": prForm.pet_category.value
     }
     this.petRegService.updatePetReg(params).subscribe((data) => {
       this.dialog.open(InfoDialogComponent, {

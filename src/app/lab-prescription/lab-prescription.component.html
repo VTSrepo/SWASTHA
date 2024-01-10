@@ -1,7 +1,6 @@
 <div class="container mar20t">
     <h5>Lab Prescription</h5>
     
-    <div class="error-container" *ngIf="!visit_no">Please save doctor notes to save lab details</div>
     <div *ngIf="!showPreviousTable">
         <button type="button" class="btn btn-success mar30" (click)="addRecord()">
             Add Row
@@ -14,7 +13,7 @@
         <button class="btn btn-success ms-2" (click)="showFiles = false;">
             close File list
           </button>
-
+        <div class="error-container" *ngIf="!visit_no">Generate Visit to Input Details.   Press SHOW PREVIOUS to View Previous Visit Details</div>
         <mat-table #table [dataSource]="dataSource">
             <!-- Test ID Column -->
             <ng-container matColumnDef="id">

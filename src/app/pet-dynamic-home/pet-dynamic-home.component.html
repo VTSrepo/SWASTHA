@@ -1,7 +1,15 @@
-<app-header></app-header>
+<app-patient-header
+  (outputPatientHeader)="patientHeader($event)"
+  [header]="patientHeader"
+></app-patient-header>
 <div class="container">
   <div class="row">
-    <h1>{{ currentHeading }}</h1>
+    <div class="col-10">
+      <h3>{{ currentHeading }}</h3>
+    </div>
+    <div class="col-2">
+      <p>Visit#: {{visit_no}}</p>
+    </div>
   </div>
   <!-- <div class="row">
     <div class="container" *ngIf="patientHeader">
@@ -39,7 +47,7 @@
       </div>
     </div>
   </div> -->
-  <div *ngIf="currentHeading === 'Notes'">
+  <div *ngIf="currentHeading === 'History'">
     <app-pet-history
       [aptObj]="this.aptObj"
       [visit_no]="visit_no"

@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="supplier-item">
-                        <label for="bu" class="form-label fs">Schedule Type</label>
+                        <label for="bu" class="form-label fs">Schedule Type <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                         <select class="form-control" name="bu" formControlName="bu" (change)="changeMonth()">
                             <option *ngFor="let bu of scheduleRef" [value]="bu.ref_code">{{bu.ref_desc}}</option>
 
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-3">
                     <div class="supplier-item">
-                        <label for="month" class="form-label fs">Month</label>
+                        <label for="month" class="form-label fs">Month <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                         <select class="form-control" name="month" formControlName="month" (change)="changeMonth()">
                             <option value="undefined" selected disabled>--Select--</option>
                             <option value="1">Jan</option>

@@ -12,7 +12,7 @@
       <div class="register-form">
         <form [formGroup]="paymentform" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label>Payment Mode</label>
+            <label>Payment Mode  <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
             <select formControlName="paymentMode" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && check.paymentMode.errors }">
               <!-- <option [ngValue]="null">-Select-</option> -->

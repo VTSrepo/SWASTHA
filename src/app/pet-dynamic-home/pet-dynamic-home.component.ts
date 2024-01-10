@@ -38,7 +38,7 @@ metaDataRoute=false;
   gotoConsultHome(val?:any) {
     if(val && val[1] && this.aptObj){
       this.aptObj.visit_no = val[1];
-      if(this.currentHeading == 'Notes') {
+      if(this.currentHeading == 'History') {
         this.aptObj.petHistoryBoolean = val[0];
       }
       if(this.currentHeading == 'Vital Parameters') {
@@ -96,5 +96,10 @@ metaDataRoute=false;
 metaHeadings = ['Fundus','Antirior Segment After pupillary Dilation','Posterior Segment After pupillary Dilation','IOP and AC','Examination of Adnexa','Vision Assesment','Cornea and Sclera']
   checkMetaDataHeading(){
    // if(this.metaHeadings.includes(this.currentHeading))
+  }
+
+  patientHeaderData(data: any) {
+    this.headerDetail = { ...data };
+    localStorage.setItem('header', JSON.stringify(this.headerDetail));
   }
 }

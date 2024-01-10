@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-3">
                 <div class=" supplier-item">
-                    <label for="branch_id" class="form-label">Ordering Branch<span class="txt-danger">*</span></label>
+                    <label for="branch_id" class="form-label">Ordering Branch <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span> <span class="txt-danger">*</span></label>
                     <select class="form-control" name="branch_id"  formControlName="branch_id" (change)="getSupplierList()">
                         <option *ngFor="let branch of branchList;" [value]="branch.branch_id">{{branch.branch_name}}</option>
 
@@ -16,7 +16,7 @@
             </div>
             <div class="col-3">
                 <div class="supplier-item">
-                    <label for="supplier_name" class="form-label">Supplier Name<span class="txt-danger">*</span></label>
+                    <label for="supplier_name" class="form-label">Supplier Name <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span> <span class="txt-danger">*</span></label>
                     <select class="form-control" name="supplier_name"  formControlName="supplier_name" (change)="onChangeSupplier()">
                         <option *ngFor="let suppData of supplierIdData" [value]="suppData.supplier_name">{{suppData.supplier_name}}</option>
 
@@ -32,7 +32,7 @@
             </div>
             <div class="col-2">
                 <div class="supplier-item">
-                    <label for="po_number" class="form-label">PO#</label>
+                    <label for="po_number" class="form-label">PO# <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                     <select class="form-control" name="po_number_number"  formControlName="po_number" (change)="setPoData()">
                         <option *ngFor="let po of poDraftData" [value]="po.po_number">{{po.po_number}}</option>
 
@@ -76,7 +76,7 @@
         <div class="row">
             <div class="col-2">
                 <div class="supplier-item">
-                    <label for="item_desc" class="form-label">Item Desc</label>
+                    <label for="item_desc" class="form-label">Item Desc <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                     <select class="form-control" name="item_desc"  formControlName="item_desc" (change)="setItemCode()">
                         <option *ngFor="let prod of prodList" [value]="prod.product_name">{{prod.product_name}}</option>
 
@@ -92,14 +92,14 @@
             </div>
             <div class="col-2">
                 <div class="supplier-item">
-                    <label for="exp_del_date" class="form-label">To be Delivered on</label>
+                    <label for="exp_del_date" class="form-label">To be Delivered on <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                     <input type="date" class="form-control" formControlName="exp_del_date"
                         name="exp_del_date"  id="exp_del_date">
                 </div>
             </div>
             <div class="col-3">
                 <div class="supplier-item">
-                    <label for="del_branch_id" class="form-label">Delivery Branch</label>
+                    <label for="del_branch_id" class="form-label">Delivery Branch <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                     <select class="form-control" name="del_branch_id"  formControlName="del_branch_id">
                         <option *ngFor="let branch of branchList;" [value]="branch.branch_id">{{branch.branch_name}}</option>
 

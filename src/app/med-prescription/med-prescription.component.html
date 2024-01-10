@@ -8,6 +8,7 @@
   <button class="btn btn-success ms-2" (click)="showFiles = false;">
       close File list
     </button>
+    <div class="error-container" *ngIf="!visit_no">Generate Visit to Input Details.   Press SHOW PREVIOUS to View Previous Visit Details</div>
     <div class="table-responsive-lg col-lg-12" style="margin-top:20px" >
     <table class="table table-bordered">
         <thead class="thead-dark">

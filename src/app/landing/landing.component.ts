@@ -71,6 +71,7 @@ export class LandingComponent implements OnInit, OnDestroy {
       this.eodDate = data;
       if (this.eodDate !== '') {
         this.fetchPatientSchedule();
+        this.fetchAppointments();
       }
     });
   }
@@ -82,8 +83,9 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   fetchAppointments() {
+    // this.us.convertTodayTostr()
     this.aptService
-      .getCurrentAppointments(this.us.convertTodayTostr())
+      .getCurrentAppointments(this.eodDate)
       .subscribe((response: { results: any }) => {
         this.aptData = response.results;
       });

@@ -15,6 +15,7 @@ import {
 import { PatientListDialogComponent } from '../utilities/patient-list-dialog/patient-list-dialog.component';
 import { Patient } from '../patient-registration/patient.model';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ReferenceService } from '../utilities/services/reference.service';
 @Component({
   selector: 'app-patient-header',
   templateUrl: './patient-header.component.html',
@@ -58,14 +59,21 @@ export class PatientHeaderComponent implements OnInit {
   month: string = '';
   year: string = '';
   @Input() insurance: any;
+  eodDate: any;
   constructor(
     private patientHeaderService: PatientHeaderService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private ref: ReferenceService
   ) {}
 
   ngOnInit(): void {
     this.searchType = 'phone_no';
 
+    this.ref.getEodDetailData().subscribe(data => {
+      console.log("EOD data", data.results);
+      this.eodDate = data.results[0].eod_date;
+
+    })
     // when navigatin from appointment table from landing page.
   }
 

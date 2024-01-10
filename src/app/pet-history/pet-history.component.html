@@ -1,7 +1,4 @@
 <div class="container mar10lr pet-history-root">
-  <div class="row">
-    <h1>History</h1>
-  </div>
     <div class="row">
         <div class="col-md-4" *ngIf="!showPreviousTable">
             <button class="btn btn-success ms-2" (click)="displayPrevious()">Show Previous</button>
@@ -21,7 +18,7 @@
             </ul>
         </div>
     </div>
-    <div class="error-container" *ngIf="!visit_no">Please save doctor notes to save History details</div>
+    <div class="error-container" *ngIf="!visit_no">Generate Visit to Input Details.   Press SHOW PREVIOUS to View Previous Visit Details</div>
     <form [formGroup]="petHistoryForm">
         <div class="mar-10b">
             <div class="row pet-label">
@@ -32,7 +29,7 @@
                     <label class="form-label margin-20t">Primary compliant <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                     <select type="dropdown" class="form-control" formControlName="main_complaint" required>
                       <option value="" selected disabled>-Select-</option>
-                      <option *ngFor="let vaValue of primaryComplaintList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                      <option *ngFor="let vaValue of primaryComplaintList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                   </select>
                 </div>
                 <div class="col-md-6">
@@ -45,7 +42,7 @@
                     <label class="form-label margin-20t">Complaint Status <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                     <select type="dropdown" class="form-control" formControlName="curr_treatment" required>
                       <option value="" selected disabled>-Select-</option>
-                      <option *ngFor="let vaValue of complaintStatusList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                      <option *ngFor="let vaValue of complaintStatusList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                   </select>
                 </div>
                 <div class="col-md-6">
@@ -64,7 +61,7 @@
                     <label class="form-label margin-20t">Concurrent  Disease</label>
                     <select type="dropdown" class="form-control" formControlName="concurrent_disease" required>
                       <option value="" selected disabled>-Select-</option>
-                      <option *ngFor="let vaValue of concurrentDiseaseList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                      <option *ngFor="let vaValue of concurrentDiseaseList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                   </select>
                 </div>
                 <div class="col-md-6">
@@ -107,13 +104,13 @@
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="lacrimation_right" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of lacrimationList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of lacrimationList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="lacrimation_left" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of lacrimationList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of lacrimationList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
             </div>
@@ -124,13 +121,13 @@
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="pain_right" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of painList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of painList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="pain_left" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of painList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of painList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
             </div>
@@ -141,13 +138,13 @@
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="blepharospasm_right" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="blepharospasm_left" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
             </div>
@@ -158,13 +155,13 @@
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="photophobia_right" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
                     <select type="dropdown" class="form-control" formControlName="photophobia_left" required>
                         <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
+                        <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
             </div>

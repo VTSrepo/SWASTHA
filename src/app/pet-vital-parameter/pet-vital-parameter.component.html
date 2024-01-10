@@ -2,6 +2,7 @@
     <button class="btn btn-success ms-2" (click)="displayPrevious()">
       Show Previous
     </button>
+    <div class="error-container" *ngIf="!visit_no">Generate Visit to Input Details.   Press SHOW PREVIOUS to View Previous Visit Details</div>
     <div *ngFor="let param of vitalParametersList; let i = index">
       <div class="row margin-20l">
         <label [for]="param.khi_desc" class="form-label margin-20t">{{

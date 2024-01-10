@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class=" supplier-item">
-                        <label for="branch_id" class="form-label">Ordered Branch<span
+                        <label for="branch_id" class="form-label">Ordered Branch <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span> <span
                                 class="txt-danger">*</span></label>
                         <select class="form-control" name="branch_id"  formControlName="branch_id" (change)="getSupplierList()">
                             <option *ngFor="let branch of branchList;" [value]="branch.branch_id">{{branch.branch_name}}</option>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="supplier-item">
-                        <label for="supplier_id" class="form-label">Supplier Name<span
+                        <label for="supplier_id" class="form-label">Supplier Name <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span> <span
                                 class="txt-danger">*</span></label>
                         <select class="form-control" name="supplier_id" formControlName="supplier_id"
                             (change)="getPoSuppPayment()">
