@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { delay, filter } from 'rxjs/operators';
+import { AppService } from './app.service';
 declare const gtag: Function;
 @Component({
   selector: 'app-root',
@@ -11,8 +12,11 @@ declare const gtag: Function;
 export class AppComponent implements OnInit {
   title = 'KRC';
   branches: any = [];
-  constructor(private http: HttpClient, private router: Router) {
-    
+  showLoader = false;
+  constructor(private http: HttpClient, private router: Router, private appService:AppService) {
+    this.appService.loadingSubObs.pipe(delay(0)).subscribe(data=>{
+      this.showLoader = data;
+    })
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)).subscribe(event => {
         console.log(event.urlAfterRedirects);

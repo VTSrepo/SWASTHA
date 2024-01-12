@@ -170,3 +170,8 @@ body {
 .pg-20 {
     padding: 20px;
 }
+
+
+::ng-deep.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: green;
+    }

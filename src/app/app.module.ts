@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule,  } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -126,6 +126,8 @@ import { PetDynamicHomeComponent } from './pet-dynamic-home/pet-dynamic-home.com
 import { PetVitalParameterComponent } from './pet-vital-parameter/pet-vital-parameter.component';
 import { ManagePetComponent } from './manage-pet/manage-pet.component';
 import { PetHealthComponent } from './pet-health/pet-health.component';
+import { AppInterceptor } from './app.interceptor';
+import { AppService } from './app.service';
 //import { InvoicePaymentTable } from './invoice-payment-report/invoice-payment-table/invoice-payment-table.component';
 //import { InvoiceProductTable } from './invoice-product-report/invoice-product-table/invoice-product-table.component';
 @NgModule({
@@ -256,7 +258,11 @@ import { PetHealthComponent } from './pet-health/pet-health.component';
     AngularFireStorageModule,
     ImageDrawingModule
   ],
-  providers: [AuthService, DatePipe],
+  providers: [AuthService, DatePipe,AppService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AppInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
