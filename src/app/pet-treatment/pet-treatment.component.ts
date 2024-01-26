@@ -50,6 +50,7 @@ export class PetTreatmentComponent {
       op_review_on: [],
       discharge_summary: []
     })
+    this.checkGenerateVisit();
   }
 
   saveTreatment() {
@@ -90,6 +91,7 @@ export class PetTreatmentComponent {
     this.showPreviousTable = false;
     this.resetTreatment();
     this.recordIndex = undefined;
+    this.checkGenerateVisit();
   }
 
   resetTreatment() {
@@ -157,6 +159,7 @@ export class PetTreatmentComponent {
   displayPrevious() {
     this.showPreviousTable = true;
     this.getTreatmentDetail();
+    this.checkGenerateVisit();
   }
 
   view(path: any) {
@@ -185,5 +188,19 @@ export class PetTreatmentComponent {
           this.filesList.push(tempObj);
         }
       });
+  }
+
+  checkGenerateVisit() {
+    if(!this.visit_no || this.showPreviousTable) {
+      this.treatmentForm.disable();
+      if(!this.visit_no && !this.showPreviousTable) {
+        this.dialog.open(InfoDialogComponent, {
+          width: '500px',
+          data: 'Please generate visit',
+        });
+      }
+    }else {
+      this.treatmentForm.enable();
+    }
   }
 }

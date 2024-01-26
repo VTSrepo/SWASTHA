@@ -27,27 +27,27 @@
             <div class="row">
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Primary compliant <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="main_complaint" required>
+                    <select type="dropdown" class="form-control"  formControlName="main_complaint" required>
                       <option value="" selected disabled>-Select-</option>
                       <option *ngFor="let vaValue of primaryComplaintList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                   </select>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Date of Onset</label>
-                    <input type="date"  class="form-control margin-10t" [attr.disabled]="showPreviousTable ? '' : null" formControlName="main_complaint_from" required/>
+                    <input type="date"  class="form-control margin-10t"  formControlName="main_complaint_from" required/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Complaint Status <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="curr_treatment" required>
+                    <select type="dropdown" class="form-control"  formControlName="curr_treatment" required>
                       <option value="" selected disabled>-Select-</option>
                       <option *ngFor="let vaValue of complaintStatusList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                   </select>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Complaint Notes</label>
-                    <textarea type="text"  class="form-control margin-10t" [attr.disabled]="showPreviousTable ? '' : null" formControlName="curr_treatment_dtl"></textarea>
+                    <textarea type="text"  class="form-control margin-10t"  formControlName="curr_treatment_dtl"></textarea>
                 </div>
             </div>
         </div>
@@ -59,14 +59,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Concurrent  Disease</label>
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="concurrent_disease" required>
+                    <select type="dropdown" class="form-control"  formControlName="concurrent_disease" required>
                       <option value="" selected disabled>-Select-</option>
                       <option *ngFor="let vaValue of concurrentDiseaseList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                   </select>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Comments</label>
-                    <input type="text"  class="form-control margin-10t" [attr.disabled]="showPreviousTable ? '' : null" formControlName="concurrent_disease_dtl" required/>
+                    <input type="text"  class="form-control margin-10t"  formControlName="concurrent_disease_dtl" required/>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <label class="form-label margin-20t">Comments</label>
-                <input type="text"  class="form-control margin-10t" [attr.disabled]="showPreviousTable ? '' : null" formControlName="medication_dtl" required/>
+                <input type="text"  class="form-control margin-10t"  formControlName="medication_dtl" required/>
                 </div>
             </div>
         </div>
@@ -102,13 +102,13 @@
                     <label class="form-label pg-t">Lacrimation<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="lacrimation_right" required>
+                    <select type="dropdown" class="form-control"  formControlName="lacrimation_right" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of lacrimationList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="lacrimation_left" required>
+                    <select type="dropdown" class="form-control"  formControlName="lacrimation_left" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of lacrimationList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
@@ -119,13 +119,13 @@
                     <label class="form-label pg-t">Pain <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="pain_right" required>
+                    <select type="dropdown" class="form-control"  formControlName="pain_right" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of painList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="pain_left" required>
+                    <select type="dropdown" class="form-control"  formControlName="pain_left" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of painList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
@@ -136,13 +136,13 @@
                     <label class="form-label pg-t">Blepharospasm <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="blepharospasm_right" required>
+                    <select type="dropdown" class="form-control"  formControlName="blepharospasm_right" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="blepharospasm_left" required>
+                    <select type="dropdown" class="form-control"  formControlName="blepharospasm_left" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
@@ -153,13 +153,13 @@
                     <label class="form-label pg-t">Photophobia <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="photophobia_right" required>
+                    <select type="dropdown" class="form-control"  formControlName="photophobia_right" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
                 </div>
                 <div class="col-md-5 flex-align">
-                    <select type="dropdown" class="form-control" [attr.disabled]="showPreviousTable ? '' : null" formControlName="photophobia_left" required>
+                    <select type="dropdown" class="form-control"  formControlName="photophobia_left" required>
                         <option value="" selected disabled>-Select-</option>
                         <option *ngFor="let vaValue of presentAbsentList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
                     </select>
@@ -169,16 +169,16 @@
             <div class="row mar-5b">
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Attitude</label>
-                    <input type="text"  class="form-control margin-10t" [attr.disabled]="showPreviousTable ? '' : null" formControlName="attitude" required/>
+                    <input type="text"  class="form-control margin-10t"  formControlName="attitude" required/>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Restraint</label>
-                    <input type="text"  class="form-control margin-10t" [attr.disabled]="showPreviousTable ? '' : null" formControlName="restraint_dtl" required/>
+                    <input type="text"  class="form-control margin-10t"  formControlName="restraint_dtl" required/>
                 </div>
             </div>
         </div>
     </form>
-    <button type="button" *ngIf="!showPreviousTable" class="btn btn-warning margin-20t" (click)="saveHistory()"><i class="fa-solid fa-paper-plane mar5r"></i>
+    <button type="button" *ngIf="!showPreviousTable" class="btn btn-warning margin-20t" (click)="saveHistory()" [disabled]="!visit_no"><i class="fa-solid fa-paper-plane mar5r"></i>
         Save
     </button>
     <button type="button" *ngIf="showPreviousTable" class="btn btn-success margin-t" (click)="back()">
