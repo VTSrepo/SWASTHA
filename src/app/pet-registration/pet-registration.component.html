@@ -1,202 +1,420 @@
 <app-header></app-header>
 <div class="container">
-    <h1 *ngIf="!updatePet">Patient Registration</h1>
-    <h1 *ngIf="updatePet">Patient Update</h1>
-    <form [formGroup]="petRegistrationForm">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="mar-top-5">
-                    <label for="patient_id" class="form-label">Patient ID</label>
-                    <input readonly type="text" class="form-control" name="patient_id" formControlName="patient_id">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="patient_name" class="form-label">Pet Name<span class="txt-danger">*</span></label>
-                    <input type="text" class="form-control" name="patient_name"
-                        formControlName="patient_name" required>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="mar-top-5">
-                    <label for="dob" class="form-label">DOB<span class="txt-danger">*</span></label>
-                    <input type="date" class="form-control" name="dob" formControlName="dob" required>
-                </div>
-            </div>
+  <h1 *ngIf="!updatePet">Patient Registration</h1>
+  <h1 *ngIf="updatePet">Patient Update</h1>
+  <form [formGroup]="petRegistrationForm">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="patient_id" class="form-label">Patient ID</label>
+          <input
+            readonly
+            type="text"
+            class="form-control"
+            name="patient_id"
+            formControlName="patient_id"
+          />
         </div>
-    
-        <div class="row">
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="animal_type" class="form-label">Species<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span><span class="txt-danger">*</span></label>
-                    <select type="dropdown" class="form-control" formControlName="animal_type" (ngModelChange)="getBreedList($event)" required>
-                        <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of animalList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="animal_breed" class="form-label">Breed Type<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span><span class="txt-danger">*</span></label>
-                    <select type="dropdown" class="form-control" formControlName="animal_breed" required>
-                        <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of animalBreedList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="patient_name" class="form-label">Pet Category<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span><span class="txt-danger">*</span></label>
-                    <select type="dropdown" class="form-control" formControlName="pet_category" required>
-                        <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of petCategoryList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
-                    </select>
-                </div>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="patient_name" class="form-label"
+            >Pet Name<span class="txt-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="patient_name"
+            formControlName="patient_name"
+            required
+          />
         </div>
-    
-        <div class="row">
-            <div class="col-md-4">
-                <label for="dob" class="form-label block">Sex<span class="txt-danger">*</span></label>
-                <input class="form-check-input mar10lr" [value]="'M'"
-                    formControlName="sex" type="radio" name="male" required>
-                <label class="form-check-label" for="male">
-                    Male
-                </label>
-                <input class=" form-check-input mar10lr" [value]="'F'"
-                    formControlName="sex" type="radio" name="female" required>
-                <label class="form-check-label" for="female">
-                    Female
-                </label>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="age" class="form-label">Age</label>
-                    <input type="number" class="form-control" name="age" formControlName="age">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="father_name" class="form-label">Owner Name<span class="txt-danger">*</span></label>
-                    <input type="text" class="form-control" name="father_name" formControlName="father_name" required>
-                </div>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="dob" class="form-label"
+            >DOB<span class="txt-danger">*</span></label
+          >
+          <input
+            type="date"
+            class="form-control"
+            name="dob"
+            formControlName="dob"
+            required
+          />
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="sterilized" class="form-label">Sterilized<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span><span class="txt-danger">*</span></label>
-                    <select type="dropdown" class="form-control" formControlName="sterilized" required>
-                        <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of sterilizedList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="last_steril_date" class="form-label">Sterilized Date</label>
-                    <input type="date" class="form-control" formControlName="last_steril_date">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="vaccinated" class="form-label">Vaccinated<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
-                    <select type="dropdown" class="form-control" formControlName="vaccinated">
-                        <option value="" selected disabled>-Select-</option>
-                        <option value="Y">Yes</option>
-                        <option value="N">No</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="last_vaccinated_date" class="form-label">Vaccinated Date</label>
-                    <input type="date" class="form-control" name="last_vaccinated_date" formControlName="last_vaccinated_date">
-                </div>
-            </div>
+      </div>
+    </div>
 
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="deworming_status" class="form-label">Deworming Status<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span><span class="txt-danger">*</span></label>
-                    <select type="dropdown" class="form-control" formControlName="deworming_status" required>
-                        <option value="" selected disabled>-Select-</option>
-                        <option value="Y">Yes</option>
-                        <option value="N">No</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="living_condition" class="form-label">Living Conditon<span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
-                    <select type="dropdown" class="form-control" formControlName="living_condition">
-                        <option value="" selected disabled>-Select-</option>
-                        <option *ngFor="let vaValue of livingConditionList" value="{{vaValue.ref_code}}">{{vaValue.ref_desc}}</option>
-                    </select>
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="animal_type" class="form-label"
+            >Species<span class="vertical-top"
+              ><mat-icon> format_list_bulleted</mat-icon></span
+            ><span
+              ><mat-icon (click)="showLOVinsert('ANITYPE')"
+                >add_shopping_cart</mat-icon
+              > </span
+            ><span class="txt-danger">*</span></label
+          >
+          <select
+            type="dropdown"
+            class="form-control"
+            formControlName="animal_type"
+            (ngModelChange)="getBreedList($event)"
+            required
+          >
+            <option value="" selected disabled>-Select-</option>
+            <option
+              *ngFor="let vaValue of animalList"
+              value="{{ vaValue.ref_code }}"
+            >
+              {{ vaValue.ref_desc }}
+            </option>
+          </select>
         </div>
-    
-        <div class="row">
-            <div class="col-md-4 mar-top-5">
-                <label for="eating_habit" class="form-label">Eating Habit</label>
-                <input type="text" class="form-control" name="eating_habit" formControlName="eating_habit">
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="animal_breed" class="form-label"
+            >Breed Type<span class="vertical-top"
+              ><mat-icon> format_list_bulleted</mat-icon></span
+            >
+            <span
+              ><mat-icon (click)="showLOVinsert(petRegistrationForm.value.animal_type, true)"
+                >add_shopping_cart</mat-icon
+              > </span
+            >
+            
+            <span class="txt-danger">*</span></label
+          >
+          <select
+            type="dropdown"
+            class="form-control"
+            formControlName="animal_breed"
+            required
+          >
+            <option value="" selected disabled>-Select-</option>
+            <option
+              *ngFor="let vaValue of animalBreedList"
+              value="{{ vaValue.ref_code }}"
+            >
+              {{ vaValue.ref_desc }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="patient_name" class="form-label"
+            >Pet Category<span class="vertical-top"
+              ><mat-icon> format_list_bulleted</mat-icon></span
+            ><span><mat-icon (click)="showLOVinsert('Pet_Cat')">add_shopping_cart</mat-icon> </span><span class="txt-danger">*</span></label
+          >
+          <select
+            type="dropdown"
+            class="form-control"
+            formControlName="pet_category"
+            required
+          >
+            <option value="" selected disabled>-Select-</option>
+            <option
+              *ngFor="let vaValue of petCategoryList"
+              value="{{ vaValue.ref_code }}"
+            >
+              {{ vaValue.ref_desc }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
 
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="defecation" class="form-label">Defication</label>
-                    <input type="text" class="form-control" name="defecation" formControlName="defecation">
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="dob" class="form-label block"
+          >Sex<span class="txt-danger">*</span></label
+        >
+        <input
+          class="form-check-input mar10lr"
+          [value]="'M'"
+          formControlName="sex"
+          type="radio"
+          name="male"
+          required
+        />
+        <label class="form-check-label" for="male"> Male </label>
+        <input
+          class="form-check-input mar10lr"
+          [value]="'F'"
+          formControlName="sex"
+          type="radio"
+          name="female"
+          required
+        />
+        <label class="form-check-label" for="female"> Female </label>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="age" class="form-label">Age</label>
+          <input
+            type="number"
+            class="form-control"
+            name="age"
+            formControlName="age"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="father_name" class="form-label"
+            >Owner Name<span class="txt-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="father_name"
+            formControlName="father_name"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="sterilized" class="form-label"
+            >Sterilized<span class="vertical-top"
+              ><mat-icon> format_list_bulleted</mat-icon></span
+            ><span><mat-icon (click)="showLOVinsert('STERIL')">add_shopping_cart</mat-icon> </span><span class="txt-danger">*</span></label
+          >
+          <select
+            type="dropdown"
+            class="form-control"
+            formControlName="sterilized"
+            required
+          >
+            <option value="" selected disabled>-Select-</option>
+            <option
+              *ngFor="let vaValue of sterilizedList"
+              value="{{ vaValue.ref_code }}"
+            >
+              {{ vaValue.ref_desc }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="last_steril_date" class="form-label"
+            >Sterilized Date</label
+          >
+          <input
+            type="date"
+            class="form-control"
+            formControlName="last_steril_date"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="vaccinated" class="form-label"
+            >Vaccinated<span class="vertical-top"
+              ><mat-icon> format_list_bulleted</mat-icon></span
+            ></label
+          >
+          <select
+            type="dropdown"
+            class="form-control"
+            formControlName="vaccinated"
+          >
+            <option value="" selected disabled>-Select-</option>
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+          </select>
+        </div>
+      </div>
+    </div>
 
-            <div class="col-md-4">
-                <div class=" mar-top-5">
-                    <label for="urination" class="form-label">Urination</label>
-                    <input type="text" class="form-control" name="urination" formControlName="urination">
-                </div> 
-            </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="last_vaccinated_date" class="form-label"
+            >Vaccinated Date</label
+          >
+          <input
+            type="date"
+            class="form-control"
+            name="last_vaccinated_date"
+            formControlName="last_vaccinated_date"
+          />
         </div>
-        
-        <div class="row">
-            <div class="col-md-4 mar-top-5">
-                <label for="drinking_habit" class="form-label">Drinking Habit</label>
-                <input type="text" class="form-control" name="drinking_habit" formControlName="drinking_habit">
-            </div>
-            <div class="col-md-4 mar-top-5">
-                <label for="mobile_no" class="form-label">Owner Mobile#<span class="txt-danger">*</span></label>
-                <input type="text" class="form-control" name="mobile_no" formControlName="mobile_no" required>
-            </div>
-            <div class="col-md-4 mar-top-5">
-                <label for="alt_mobile_no" class="form-label">Alternate Mobile#</label>
-                <input type="text" class="form-control" name="alt_mobile_no" formControlName="alt_mobile_no">
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-md-4 mar-top-5">
-                <label for="ref_by_doctor" class="form-label">Ref By Doctor</label>
-                <input type="text" class="form-control" name="ref_by_doctor" formControlName="ref_by_doctor">
-            </div>
-            <div class="col-md-4 mar-top-5">
-                <label for="address" class="form-label">Address<span class="txt-danger">*</span></label>
-                <textarea class="form-control" name="address" formControlName="address" required></textarea>
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="mar-top-5">
-                <label for="family_history" class="form-label">Family History</label>
-                <textarea class="form-control" name="family_history" formControlName="family_history"></textarea>
-            </div>
-        </div>
-    </form>
-    <button class="btn btn-danger mar20t mar10lr" (click)="goBack()"><i class="fa-solid fa-arrow-left mar5r"></i>Back</button>
-    <button [disabled]="!petRegistrationForm.valid" *ngIf="!updatePet" (click)="savePetReg()"
-        class="btn btn-success mar20t"><i class="fa-solid fa-arrow-right mar5r"></i>Submit</button>
+      </div>
 
-    <button [disabled]="!petRegistrationForm.valid" *ngIf="updatePet" (click)="updatePetDetails()"
-        class="btn btn-warning  mar20t"><i class="fa-solid fa-paper-plane mar5r"></i>Update</button>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="deworming_status" class="form-label"
+            >Deworming Status<span class="vertical-top"
+              ><mat-icon> format_list_bulleted</mat-icon></span
+            ><span class="txt-danger">*</span></label
+          >
+          <select
+            type="dropdown"
+            class="form-control"
+            formControlName="deworming_status"
+            required
+          >
+            <option value="" selected disabled>-Select-</option>
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="living_condition" class="form-label"
+            >Living Conditon<span class="vertical-top"
+              ><mat-icon> format_list_bulleted</mat-icon></span
+            ><span><mat-icon (click)="showLOVinsert('LIVCOND')">add_shopping_cart</mat-icon> </span></label
+          >
+          <select
+            type="dropdown"
+            class="form-control"
+            formControlName="living_condition"
+          >
+            <option value="" selected disabled>-Select-</option>
+            <option
+              *ngFor="let vaValue of livingConditionList"
+              value="{{ vaValue.ref_code }}"
+            >
+              {{ vaValue.ref_desc }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mar-top-5">
+        <label for="eating_habit" class="form-label">Eating Habit</label>
+        <input
+          type="text"
+          class="form-control"
+          name="eating_habit"
+          formControlName="eating_habit"
+        />
+      </div>
+
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="defecation" class="form-label">Defication</label>
+          <input
+            type="text"
+            class="form-control"
+            name="defecation"
+            formControlName="defecation"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="mar-top-5">
+          <label for="urination" class="form-label">Urination</label>
+          <input
+            type="text"
+            class="form-control"
+            name="urination"
+            formControlName="urination"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mar-top-5">
+        <label for="drinking_habit" class="form-label">Drinking Habit</label>
+        <input
+          type="text"
+          class="form-control"
+          name="drinking_habit"
+          formControlName="drinking_habit"
+        />
+      </div>
+      <div class="col-md-4 mar-top-5">
+        <label for="mobile_no" class="form-label"
+          >Owner Mobile#<span class="txt-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="mobile_no"
+          formControlName="mobile_no"
+          required
+        />
+      </div>
+      <div class="col-md-4 mar-top-5">
+        <label for="alt_mobile_no" class="form-label">Alternate Mobile#</label>
+        <input
+          type="text"
+          class="form-control"
+          name="alt_mobile_no"
+          formControlName="alt_mobile_no"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mar-top-5">
+        <label for="ref_by_doctor" class="form-label">Ref By Doctor</label>
+        <input
+          type="text"
+          class="form-control"
+          name="ref_by_doctor"
+          formControlName="ref_by_doctor"
+        />
+      </div>
+      <div class="col-md-4 mar-top-5">
+        <label for="address" class="form-label"
+          >Address<span class="txt-danger">*</span></label
+        >
+        <textarea
+          class="form-control"
+          name="address"
+          formControlName="address"
+          required
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mar-top-5">
+        <label for="family_history" class="form-label">Family History</label>
+        <textarea
+          class="form-control"
+          name="family_history"
+          formControlName="family_history"
+        ></textarea>
+      </div>
+    </div>
+  </form>
+  <button class="btn btn-danger mar20t mar10lr" (click)="goBack()">
+    <i class="fa-solid fa-arrow-left mar5r"></i>Back
+  </button>
+  <button
+    [disabled]="!petRegistrationForm.valid"
+    *ngIf="!updatePet"
+    (click)="savePetReg()"
+    class="btn btn-success mar20t"
+  >
+    <i class="fa-solid fa-arrow-right mar5r"></i>Submit
+  </button>
+
+  <button
+    [disabled]="!petRegistrationForm.valid"
+    *ngIf="updatePet"
+    (click)="updatePetDetails()"
+    class="btn btn-warning mar20t"
+  >
+    <i class="fa-solid fa-paper-plane mar5r"></i>Update
+  </button>
 </div>

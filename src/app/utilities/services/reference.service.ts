@@ -167,4 +167,12 @@ export class ReferenceService {
       headers: headers,
     });
   }
+
+  
+  createUpdateRefDesc(params: any):Observable<any> {
+    let headers= new HttpHeaders();
+    headers.append('content-Type', 'application/json');
+    return this.http.post(environment.apiUrl + 'createreference', params,
+    { headers: headers })
+}
 }

@@ -128,6 +128,7 @@ import { ManagePetComponent } from './manage-pet/manage-pet.component';
 import { PetHealthComponent } from './pet-health/pet-health.component';
 import { AppInterceptor } from './app.interceptor';
 import { AppService } from './app.service';
+import { RefMasterCreateComponent } from './utilities/ref-master-create/ref-master-create.component';
 //import { InvoicePaymentTable } from './invoice-payment-report/invoice-payment-table/invoice-payment-table.component';
 //import { InvoiceProductTable } from './invoice-product-report/invoice-product-table/invoice-product-table.component';
 @NgModule({
@@ -243,7 +244,8 @@ import { AppService } from './app.service';
     PetConsulationComponent,
     PetVitalParameterComponent,
     ManagePetComponent,
-    PetHealthComponent
+    PetHealthComponent,
+    RefMasterCreateComponent
   ],
   imports: [
     BrowserModule,
