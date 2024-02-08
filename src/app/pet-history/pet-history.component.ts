@@ -82,6 +82,7 @@ export class PetHistoryComponent {
       photophobia_right: [],
       photophobia_left: []
     })
+    this.checkGenerateVisit();
   }
 
   saveHistory() {
@@ -222,14 +223,29 @@ export class PetHistoryComponent {
   displayPrevious() {
     this.showPreviousTable = true;
     this.getHistoryDetail();
+    this.checkGenerateVisit();
   }
 
   back() {
     this.showPreviousTable = false;
     this.resetRecord();
+    this.checkGenerateVisit();
   }
 
   resetRecord() {
     this.petHistoryForm.reset();
+  }
+  checkGenerateVisit() {
+    if(!this.visit_no || this.showPreviousTable) {
+      this.petHistoryForm.disable();
+      if(!this.visit_no && !this.showPreviousTable) {
+        this.dialog.open(InfoDialogComponent, {
+          width: '500px',
+          data: 'Please generate visit',
+        });
+      }
+    }else {
+      this.petHistoryForm.enable();
+    }
   }
 }

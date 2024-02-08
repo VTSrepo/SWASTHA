@@ -50,6 +50,7 @@ export class PetDiagnosisComponent {
       diagnostic_agent: [],
       advise: []          
     })
+    this.checkGenerateVisit();
   }
 
   saveDiagnosis() {
@@ -90,6 +91,7 @@ export class PetDiagnosisComponent {
     this.showPreviousTable = false;
     this.resetDiagnosis();
     this.recordIndex = undefined;
+    this.checkGenerateVisit();
   }
 
   resetDiagnosis() {
@@ -141,6 +143,7 @@ export class PetDiagnosisComponent {
   displayPrevious() {
     this.showPreviousTable = true;
     this.getDiagnosisDetail();
+    this.checkGenerateVisit();
   }
 
   view(path: any) {
@@ -169,5 +172,19 @@ export class PetDiagnosisComponent {
           this.filesList.push(tempObj);
         }
       });
+  }
+
+  checkGenerateVisit() {
+    if(!this.visit_no || this.showPreviousTable) {
+      this.diagnosisForm.disable();
+      if(!this.visit_no && !this.showPreviousTable) {
+        this.dialog.open(InfoDialogComponent, {
+          width: '500px',
+          data: 'Please generate visit',
+        });
+      }
+    }else {
+      this.diagnosisForm.enable();
+    }
   }
 }

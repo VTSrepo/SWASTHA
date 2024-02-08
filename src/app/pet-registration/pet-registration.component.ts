@@ -129,6 +129,9 @@ export class PetRegistrationComponent {
           this.getBreedList(type);
         } else {
           this.retrieveReferenceData(type);
+          if(type=== 'ANITYPE'){
+            this.petRegistrationForm.controls.animal_type.setValue('');            
+          }          
         }        
       }
     });

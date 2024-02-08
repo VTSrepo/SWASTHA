@@ -81,7 +81,7 @@
             >Breed Type<span class="vertical-top"
               ><mat-icon> format_list_bulleted</mat-icon></span
             >
-            <span
+            <span *ngIf="petRegistrationForm.value.animal_type"
               ><mat-icon (click)="showLOVinsert(petRegistrationForm.value.animal_type, true)"
                 >add_shopping_cart</mat-icon
               > </span
@@ -131,28 +131,16 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
-        <label for="dob" class="form-label block"
-          >Sex<span class="txt-danger">*</span></label
-        >
-        <input
-          class="form-check-input mar10lr"
-          [value]="'M'"
-          formControlName="sex"
-          type="radio"
-          name="male"
-          required
-        />
-        <label class="form-check-label" for="male"> Male </label>
-        <input
-          class="form-check-input mar10lr"
-          [value]="'F'"
-          formControlName="sex"
-          type="radio"
-          name="female"
-          required
-        />
-        <label class="form-check-label" for="female"> Female </label>
+      <div class="col-md-4 mar-top-5">
+        <div>
+            <label class="form-check-label" for="sex">
+                Sex
+            </label>
+        </div>
+        <mat-radio-group aria-label="Select an option" formControlName="sex">
+            <mat-radio-button value="M" class="mar10lr">Male</mat-radio-button>
+            <mat-radio-button value="F" class="mar10lr">Female</mat-radio-button>
+        </mat-radio-group>
       </div>
       <div class="col-md-4">
         <div class="mar-top-5">

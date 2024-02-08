@@ -36,7 +36,9 @@ export class RefMasterCreateComponent implements OnInit {
     params.ref_desc = this.ref_desc;
     params.ref_code = this.ref_desc;
     this.ref.createUpdateRefDesc(params).subscribe(data=>{
-      this.dialogRef.close(true);
+      this.dialogRef.close(params.ref_code);
+      params.ref_desc = ''
+      params.ref_code = ''
     })
   }
 }
