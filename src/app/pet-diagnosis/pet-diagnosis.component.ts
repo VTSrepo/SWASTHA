@@ -53,6 +53,37 @@ export class PetDiagnosisComponent {
     this.checkGenerateVisit();
   }
 
+  receiveVoiceText(voictext:string, key:string){
+    switch(key){
+      case 'direct_opthol': {
+        this.diagnosisForm.controls.direct_opthol.setValue(voictext);
+        break;
+      }
+      case 'tentative_diag': {
+        this.diagnosisForm.controls.tentative_diag.setValue(voictext);
+        break;
+      }
+      case 'indirect_opthol': {
+        this.diagnosisForm.controls.indirect_opthol.setValue(voictext);
+        break;
+      }
+      case 'confirm_diag': {
+        this.diagnosisForm.controls.confirm_diag.setValue(voictext);
+        break;
+      }
+      case 'diagnostic_agent': {
+        this.diagnosisForm.controls.diagnostic_agent.setValue(voictext);
+        break;
+      }
+      case 'advise': {
+        this.diagnosisForm.controls.advise.setValue(voictext);
+        break;
+      }
+      
+    }
+   
+  }
+
   saveDiagnosis() {
     const diagnosisForm = this.diagnosisForm.controls;
     let params = {

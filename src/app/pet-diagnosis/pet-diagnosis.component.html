@@ -65,6 +65,7 @@
             </div>
             <div class="col-md-9">
                 <textarea type="text"  class="form-control margin-10t"  formControlName="tentative_diag"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'tentative_diag')"></app-vot>
             </div>
         </div>
         <div class="row mar-5b">
@@ -73,6 +74,7 @@
             </div>
             <div class="col-md-9">
                 <textarea type="text"  class="form-control margin-10t"  formControlName="confirm_diag"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'confirm_diag')"></app-vot>
             </div>
         </div>
         <div class="row mar-5b">
@@ -81,6 +83,7 @@
             </div>
             <div class="col-md-9">
                 <textarea type="text"  class="form-control margin-10t"  formControlName="direct_opthol"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'direct_opthol')"></app-vot>
             </div>
         </div>
         <div class="row mar-5b">
@@ -89,6 +92,7 @@
             </div>
             <div class="col-md-9">
                 <textarea type="text"  class="form-control margin-10t"  formControlName="indirect_opthol"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'indirect_opthol')"></app-vot>
             </div>
         </div>
         <div class="row mar-5b">
@@ -97,6 +101,7 @@
             </div>
             <div class="col-md-9">
                 <textarea type="text"  class="form-control margin-10t"  formControlName="diagnostic_agent"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'diagnostic_agent')"></app-vot>
             </div>
         </div>
         <div class="row mar-5b">
@@ -105,6 +110,7 @@
             </div>
             <div class="col-md-9">
                 <textarea type="text"  class="form-control margin-10t"  formControlName="advise"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'advise')"></app-vot>
             </div>
         </div>
     </form>
