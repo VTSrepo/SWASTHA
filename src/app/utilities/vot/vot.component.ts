@@ -10,6 +10,7 @@ export class VotComponent implements OnInit {
   @Output() voiceText = new EventEmitter();
   text = '';
 recognition:any;
+transcript_arr: any = [];
   ngOnInit() {
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
       this.recognition = new webkitSpeechRecognition();
@@ -19,13 +20,21 @@ recognition:any;
       this.recognition.interimResults = true;
 
       // Handle recognition results
-      this.recognition.onresult = (event:any) => {
-        const result = event.results[event.results.length - 1];
-        const transcript = result[0].transcript;
-        //emit transcript
-        console.log(transcript)
+      // this.recognition.onresult = (event:any) => {
+      //   const result = event.results[event.results.length - 1];
+      //   const transcript = result[0].transcript;
+      //   //emit transcript
+      //   console.log(transcript)
+      // this.voiceText.emit(transcript);
+      this.recognition.addEventListener('result', (e: any) => {
+        const transcript = Array.from(e.results)
+          .map((result: any) => result[0])
+          .map((result) => result.transcript)
+          .join('');
+          //@ts-ignore
+        this.transcript_arr.push(transcript);
         this.voiceText.emit(transcript);
-      };
+      });
 
       // Handle recognition errors
       this.recognition.onerror = (event:any) => {
