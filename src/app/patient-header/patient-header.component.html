@@ -63,10 +63,12 @@
       <label class="mar15">Age: {{patientHeader?.age}}</label>
       <label class="mar15">Sex: {{patientHeader?.sex}}</label>
       <label class="mar15">Phone: {{patientHeader?.mobile_no}}</label>
-      <label class="mar15">Patient Information: {{patientHeader?.patient_type_name}}</label>
+      <label class="mar15">Species: {{patientHeader?.animal_type_name}}</label>
+      <label class="mar15">Breed Name: {{patientHeader?.animal_breed_name}}</label>
+      <label class="mar15">Owner Name: {{patientHeader?.owner_name}}</label>
       <label class="mar15">Pet Category: {{patientHeader?.pet_category_name}}</label>
-      <br>
-      <label class="mar15" *ngIf="showAmountLabels">Business Date: {{eodDate | date: 'dd-MM-yyyy'}}</label>
+      <!-- <br> -->
+      <label class="mar15" *ngIf="showAmountLabels">Consult Date: {{eodDate | date: 'dd-MM-yyyy'}}</label>
       <!-- <label class="mar15" *ngIf="showAmountLabels">Total Invoice Amount: {{patientHeader?.net_inv_amount}}</label>
       <label class="mar15" *ngIf="showAmountLabels">Total Paid: {{patientHeader?.net_inv_paid}}</label>
       <label class="mar15" *ngIf="showAmountLabels">Total Balance: {{patientHeader?.net_inv_balance}}</label> -->

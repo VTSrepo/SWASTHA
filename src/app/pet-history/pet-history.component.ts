@@ -248,4 +248,10 @@ export class PetHistoryComponent {
       this.petHistoryForm.enable();
     }
   }
+
+  convertToStr(event: any, formName: any) {
+    console.log(event);
+    let value = event.value.toString();
+    this.petHistoryForm.controls[formName].setValue(value);
+  }
 }

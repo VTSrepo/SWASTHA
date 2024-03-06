@@ -26,11 +26,26 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <label class="form-label margin-20t">Primary compliant <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
-                    <select type="dropdown" class="form-control"  formControlName="main_complaint" required>
-                      <option value="" selected disabled>-Select-</option>
-                      <option *ngFor="let vaValue of primaryComplaintList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
-                  </select>
+                    <label class="form-label margin-0">Primary compliant <span class="vertical-top"><mat-icon> format_list_bulleted</mat-icon></span></label>
+                    <div class="flex-align">
+                        <div class="col-1 custom">
+                            <mat-form-field>
+                                <mat-icon>add
+                                    <mat-select multiple (selectionChange)="convertToStr($event, 'main_complaint')" panelClass="select-panel">
+                                        <mat-select-trigger></mat-select-trigger>
+                                        <mat-option *ngFor="let value of primaryComplaintList" [value]="value.ref_desc">{{value.ref_desc}}</mat-option>
+                                    </mat-select>
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-11">
+                            <input  type="text" class="form-control" formControlName="main_complaint">
+                            <!-- <select type="dropdown" class="form-control"  formControlName="main_complaint" required>
+                                <option value="" selected disabled>-Select-</option>
+                                <option *ngFor="let vaValue of primaryComplaintList" value="{{vaValue.ref_desc}}">{{vaValue.ref_desc}}</option>
+                              </select> -->
+                        </div> 
+                    </div>             
                 </div>
                 <div class="col-md-6">
                     <label class="form-label margin-20t">Date of Onset</label>
