@@ -7,6 +7,7 @@ import { UtilityService } from '../utilities/services/utility.service';
 import { ReferenceService } from '../utilities/services/reference.service';
 import { Router } from '@angular/router';
 import { RefMasterCreateComponent } from '../utilities/ref-master-create/ref-master-create.component';
+import { PromptDialogComponent } from '../utilities/prompt-dialog/prompt-dialog.component';
 
 @Component({
   selector: 'app-pet-registration',
@@ -179,12 +180,39 @@ export class PetRegistrationComponent {
       },
       (error) => {
         if (error.error.status === 404) {
-          this.dialog.open(InfoDialogComponent, {
-            width: '400px',
-            data: error.error.message,
-          });
+          if (
+            error.error.code === 4001 &&
+            error.error.message === 'Sorry, Patient Mobile No Already Exists!.'
+          ) {
+            const duplicateuser = this.dialog.open(PromptDialogComponent, {
+              width: '300px',
+              data: 'Pet Already registered. Do you want to proceed registration?',
+            });
+            duplicateuser.afterClosed().subscribe((result) => {
+              if (result) {
+                //@ts-ignore
+                params['reapproval'] = 'Y';
+                this.petRegService.createPetReg(params)
+                  .subscribe((response) => {
+                    this.dialog.open(InfoDialogComponent, {
+                      width: '300px',
+                      data: 'Pet Registered successfully!!!',
+                    });
+                    this.router.navigate(['landing']);
+                  });
+              }
+            });
+          }
         }
       }
+      // (error) => {
+      //   if (error.error.status === 404) {
+      //     this.dialog.open(InfoDialogComponent, {
+      //       width: '400px',
+      //       data: error.error.message,
+      //     });
+      //   }
+      // }
     );
   }
 
