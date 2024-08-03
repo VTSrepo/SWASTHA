@@ -34,6 +34,7 @@ export type aptModel = {
   petIOPBoolean: boolean;
   petPosteriorBoolean: boolean;
   petAntiriorBoolean: boolean;
+  petAnteriorChamberBoolean: boolean;
   petFundusBoolean: boolean;
   petDiagnosisBoolean: boolean;
   petTreatmentBoolean: boolean;

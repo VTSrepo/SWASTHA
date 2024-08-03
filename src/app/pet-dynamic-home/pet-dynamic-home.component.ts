@@ -77,6 +77,9 @@ metaDataRoute=false;
       if(this.currentHeading == 'Lab') {
         this.aptObj.petLabBoolean = val[0];
       }
+      if(this.currentHeading == 'Anterior Chamber before pupillary Dilation') {
+        this.aptObj.petAnteriorChamberBoolean = val[0];
+      }
     }    
     this.router.navigate(['/pet-consultation-home'], { state: this.aptObj });
   }
@@ -93,7 +96,7 @@ metaDataRoute=false;
         });
     }
   }
-metaHeadings = ['Fundus','Antirior Segment After pupillary Dilation','Posterior Segment After pupillary Dilation','IOP and AC','Examination of Adnexa','Vision Assesment','Cornea and Sclera']
+metaHeadings = ['Fundus','Antirior Segment After pupillary Dilation','Posterior Segment After pupillary Dilation','IOP and AC','Examination of Adnexa','Vision Assesment','Cornea and Sclera', 'Anterior Chamber before Pupilary Dialation']
   checkMetaDataHeading(){
    // if(this.metaHeadings.includes(this.currentHeading))
   }

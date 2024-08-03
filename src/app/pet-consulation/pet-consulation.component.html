@@ -75,6 +75,16 @@
       }"
       >IOP and AC <i *ngIf="aptObj.petIOPBoolean" class="fa fa-check fa-xl clr-blue" aria-hidden="true"></i></mat-grid-tile
     >
+
+    <mat-grid-tile
+      [routerLink]="['/pet-dynamic-home']"
+      [state]="{
+        visit_no: visit_no,
+        aptObj: aptObj,
+        heading: 'Anterior Chamber before Pupilary Dialation'
+      }"
+      >Anterior Chamber before Pupilary Dialation <i *ngIf="aptObj.petPosteriorBoolean" class="fa fa-check fa-xl clr-blue" aria-hidden="true"></i></mat-grid-tile
+    >
     
 
 
