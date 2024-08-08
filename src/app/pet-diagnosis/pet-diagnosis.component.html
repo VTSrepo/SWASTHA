@@ -95,6 +95,17 @@
                 <app-vot (voiceText)="receiveVoiceText($event,'indirect_opthol')"></app-vot>
             </div>
         </div>
+
+        <div class="row mar-5b">
+            <div class="col-md-3">
+                <label class="form-label mar20t">Slit Lamp Bio microscropy</label>
+            </div>
+            <div class="col-md-9">
+                <textarea type="text"  class="form-control margin-10t"  formControlName="slit_lamp_biomicroscopy"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'slit_lamp_biomicroscopy')"></app-vot>
+            </div>
+        </div>
+
         <div class="row mar-5b">
             <div class="col-md-3">
                 <label class="form-label mar20t">Diagnotic Agents</label>
@@ -102,6 +113,55 @@
             <div class="col-md-9">
                 <textarea type="text"  class="form-control margin-10t"  formControlName="diagnostic_agent"></textarea>
                 <app-vot (voiceText)="receiveVoiceText($event,'diagnostic_agent')"></app-vot>
+            </div>
+        </div>
+        <div class="row mar-5b">
+            <div class="col-md-3">
+                <label class="form-label mar20t">Gonioscopy</label>
+            </div>
+            <div class="col-md-9">
+                <textarea type="text"  class="form-control margin-10t"  formControlName="gonioscopy"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'gonioscopy')"></app-vot>
+            </div>
+        </div>
+        <div class="row mar-5b">
+            <div class="col-md-3">
+                <label class="form-label mar20t">A - Scan Ultra Sonography</label>
+            </div>
+            <div class="col-md-9">
+                <textarea type="text"  class="form-control margin-10t"  formControlName="a_scan_ultra_sonography"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'a_scan_ultra_sonography')"></app-vot>
+            </div>
+        </div>
+        
+        <div class="row mar-5b">
+            <div class="col-md-3">
+                <label class="form-label mar20t">B - Scan Ultra Sonography</label>
+            </div>
+            <div class="col-md-9">
+                <textarea type="text"  class="form-control margin-10t"  formControlName="b_scan_ultra_sonography"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'b_scan_ultra_sonography')"></app-vot>
+            </div>
+        </div>
+
+        <div class="row mar-5b">
+            <div class="col-md-3">
+                <label class="form-label mar20t">Keratometry</label>
+            </div>
+            <div class="col-md-9">
+                <textarea type="text"  class="form-control margin-10t"  formControlName="keratometry"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'keratometry')"></app-vot>
+            </div>
+        </div>
+        
+
+        <div class="row mar-5b">
+            <div class="col-md-3">
+                <label class="form-label mar20t">Desired IOL Power</label>
+            </div>
+            <div class="col-md-9">
+                <textarea type="text"  class="form-control margin-10t"  formControlName="desired_iol_power"></textarea>
+                <app-vot (voiceText)="receiveVoiceText($event,'desired_iol_power')"></app-vot>
             </div>
         </div>
         <div class="row mar-5b">

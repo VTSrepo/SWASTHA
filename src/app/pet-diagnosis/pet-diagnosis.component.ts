@@ -47,7 +47,13 @@ export class PetDiagnosisComponent {
       confirm_diag: [],   
       direct_opthol: [], 
       indirect_opthol: [],
+      slit_lamp_biomicroscopy:[],
       diagnostic_agent: [],
+      gonioscopy:[],
+      a_scan_ultra_sonography:[],
+      b_scan_ultra_sonography:[],
+      keratometry:[],
+      desired_iol_power:[],
       advise: []          
     })
     this.checkGenerateVisit();
@@ -69,6 +75,30 @@ export class PetDiagnosisComponent {
       }
       case 'confirm_diag': {
         this.diagnosisForm.controls.confirm_diag.setValue(voictext);
+        break;
+      }
+      case 'slit_lamp_biomicroscopy': {
+        this.diagnosisForm.controls.slit_lamp_biomicroscopy.setValue(voictext);
+        break;
+      }
+      case 'gonioscopy': {
+        this.diagnosisForm.controls.gonioscopy.setValue(voictext);
+        break;
+      }
+      case 'a_scan_ultra_sonography':{
+        this.diagnosisForm.controls.a_scan_ultra_sonography.setValue(voictext);
+        break;
+      }
+      case 'keratometry': {
+        this.diagnosisForm.controls.keratometry.setValue(voictext);
+        break;
+      }
+      case 'b_scan_ultra_sonography':{
+        this.diagnosisForm.controls.b_scan_ultra_sonography.setValue(voictext);
+        break;
+      }
+      case 'desired_iol_power':{
+        this.diagnosisForm.controls.desired_iol_power.setValue(voictext);
         break;
       }
       case 'diagnostic_agent': {
@@ -98,6 +128,12 @@ export class PetDiagnosisComponent {
         confirm_diag: diagnosisForm.confirm_diag.value,   
         direct_opthol: diagnosisForm.direct_opthol.value, 
         indirect_opthol: diagnosisForm.indirect_opthol.value,
+        slit_lamp_biomicroscopy: diagnosisForm.slit_lamp_biomicroscopy.value,
+        gonioscopy:diagnosisForm.gonioscopy.value,
+        a_scan_ultra_sonography:diagnosisForm.a_scan_ultra_sonography.value,
+        b_scan_ultra_sonography: diagnosisForm.b_scan_ultra_sonography.value,
+        keratometry:diagnosisForm.keratometry.value,
+        desired_iol_power:diagnosisForm.desired_iol_power.value,
         diagnostic_agent: diagnosisForm.diagnostic_agent.value,
         advise: diagnosisForm.advise.value 
       };
