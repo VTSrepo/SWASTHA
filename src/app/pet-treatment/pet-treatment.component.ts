@@ -10,10 +10,9 @@ import { PetTreatmentService } from './pet-treatment.service';
 @Component({
   selector: 'app-pet-treatment',
   templateUrl: './pet-treatment.component.html',
-  styleUrls: ['./pet-treatment.component.scss']
+  styleUrls: ['./pet-treatment.component.scss'],
 })
 export class PetTreatmentComponent {
-
   @Input() headerDetail: any;
   @Input() visit_no: string = '';
   @Input() visit_date: any;
@@ -21,7 +20,7 @@ export class PetTreatmentComponent {
   @Output() isActiveTreatment = new EventEmitter();
   treatmentForm!: FormGroup;
   treatmentBoolean: boolean = false;
-  showPreviousTable:boolean = false;
+  showPreviousTable: boolean = false;
   treatmentDetailData: any = [];
   prevCounter = 0;
   recordIndex: number | undefined;
@@ -33,12 +32,14 @@ export class PetTreatmentComponent {
   imageSrc: any = '';
   videoSrc: any = '';
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private utility: UtilityService,
     private ref: ReferenceService,
-    private treatmentService: PetTreatmentService) {}
+    private treatmentService: PetTreatmentService
+  ) {}
 
   ngOnInit(): void {
     
@@ -48,28 +49,36 @@ export class PetTreatmentComponent {
       surgical: [],
       postop_medi: [],
       op_review_on: [],
-      discharge_summary: []
-    })
+      discharge_summary: [],
+      procedure_recommended: [],
+      procedure_performed: [],
+      anesthisia_protocol: [],
+      surgical_procedure: [],
+    });
     this.checkGenerateVisit();
   }
 
   saveTreatment() {
     const treatmentForm = this.treatmentForm.controls;
     let params = {
-        org_id: localStorage.getItem('org_id'),
-        branch_id: localStorage.getItem('branch_id'),
-        patient_id: this.headerDetail.patient_id,
-        user_id: localStorage.getItem('user_id'),
-        dept_id: this.aptObj.dept_id,
-        visit_no: this.visit_no,
-        visit_date: this.visit_date,
-        medical_reco: treatmentForm.medical_reco.value,
-        medi_review_on: treatmentForm.medi_review_on.value,
-        surgical: treatmentForm.surgical.value,
-        postop_medi: treatmentForm.postop_medi.value,
-        op_review_on: treatmentForm.op_review_on.value,
-        discharge_summary: treatmentForm.discharge_summary.value
-      };
+      org_id: localStorage.getItem('org_id'),
+      branch_id: localStorage.getItem('branch_id'),
+      patient_id: this.headerDetail.patient_id,
+      user_id: localStorage.getItem('user_id'),
+      dept_id: this.aptObj.dept_id,
+      visit_no: this.visit_no,
+      visit_date: this.visit_date,
+      medical_reco: treatmentForm.medical_reco.value,
+      medi_review_on: treatmentForm.medi_review_on.value,
+      surgical: treatmentForm.surgical.value,
+      postop_medi: treatmentForm.postop_medi.value,
+      op_review_on: treatmentForm.op_review_on.value,
+      discharge_summary: treatmentForm.discharge_summary.value,
+      procedure_recommended: treatmentForm.procedure_recommended.value,
+      procedure_performed: treatmentForm.procedure_performed.value,
+      anesthisia_protocol: treatmentForm.anesthisia_protocol.value,
+      surgical_procedure: treatmentForm.surgical_procedure.value,
+    };
     this.treatmentService.submitTreatment(params).subscribe((data) => {
       console.log(data);
       this.treatmentBoolean = true;
@@ -82,9 +91,7 @@ export class PetTreatmentComponent {
   }
 
   emitTreatment() {
-    this.isActiveTreatment.emit(
-      [this.treatmentBoolean,this.visit_no]
-    );
+    this.isActiveTreatment.emit([this.treatmentBoolean, this.visit_no]);
   }
 
   back() {
@@ -100,16 +107,18 @@ export class PetTreatmentComponent {
 
   getTreatmentDetail() {
     const patient_id = this.headerDetail.patient_id;
-    this.treatmentService.getTreatment(patient_id).subscribe(data => {
-      console.log('Treatment Data',data);
+    this.treatmentService.getTreatment(patient_id).subscribe((data) => {
+      console.log('Treatment Data', data);
       this.treatmentDetailData = data.results;
       this.treatmentDetailData = this.treatmentDetailData.reverse();
       this.setCurrentObjectData();
-    })
+    });
   }
 
   setCurrentObjectData() {
-    this.treatmentForm.patchValue(this.treatmentDetailData[this.getLastRecordIndex()]);
+    this.treatmentForm.patchValue(
+      this.treatmentDetailData[this.getLastRecordIndex()]
+    );
     const mediReview = this.utility.convertDate(
       this.treatmentDetailData[this.getLastRecordIndex()].medi_review_on
     );
@@ -118,7 +127,8 @@ export class PetTreatmentComponent {
       this.treatmentDetailData[this.getLastRecordIndex()].op_review_on
     );
     this.treatmentForm.controls.op_review_on.setValue(opReview);
-    this.showVisitNo = this.treatmentDetailData[this.getLastRecordIndex()].visit_no;
+    this.showVisitNo =
+      this.treatmentDetailData[this.getLastRecordIndex()].visit_no;
     this.showVisitDate = this.utility.convertDate(
       this.treatmentDetailData[this.getLastRecordIndex()].visit_date
     );
@@ -171,7 +181,7 @@ export class PetTreatmentComponent {
     if (path.indexOf('.mp4') >= 0) {
       this.videoSrc = path;
     } else {
-      this.imageSrc = path;      
+      this.imageSrc = path;
     }
   }
   retrieveFiles() {
@@ -179,7 +189,7 @@ export class PetTreatmentComponent {
     this.filesList = [];
     this.ref
       .getFiles(this.headerDetail.patient_id, 'Treatment')
-      .subscribe((data:any) => {
+      .subscribe((data: any) => {
         let temp = data;
         for (let i = 0; i < temp.length; i++) {
           let tempObj = { fileName: '', filePath: '' };
@@ -191,15 +201,15 @@ export class PetTreatmentComponent {
   }
 
   checkGenerateVisit() {
-    if(!this.visit_no || this.showPreviousTable) {
+    if (!this.visit_no || this.showPreviousTable) {
       this.treatmentForm.disable();
-      if(!this.visit_no && !this.showPreviousTable) {
+      if (!this.visit_no && !this.showPreviousTable) {
         this.dialog.open(InfoDialogComponent, {
           width: '500px',
           data: 'Please generate visit',
         });
       }
-    }else {
+    } else {
       this.treatmentForm.enable();
     }
   }
