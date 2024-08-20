@@ -74,7 +74,7 @@ metaDataRoute=false;
       if(this.currentHeading == 'Medicine') {
         this.aptObj.petMedicineBoolean = val[0];
       }
-      if(this.currentHeading == 'Lab') {
+      if(this.currentHeading == 'Investigation') {
         this.aptObj.petLabBoolean = val[0];
       }
       if(this.currentHeading == 'Anterior Chamber before pupillary Dilation') {
